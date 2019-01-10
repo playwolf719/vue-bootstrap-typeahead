@@ -96,7 +96,11 @@ export default {
     prepend: String,
     append: String
   },
-
+  watch: {
+    value: function(newVal, oldVal) {
+      this.inputValue = newVal
+    }
+  },
   computed: {
     sizeClasses() {
       return this.size ? `input-group input-group-${this.size}` : 'input-group'
@@ -131,7 +135,6 @@ export default {
         listStyle.marginLeft = prependRect.width + 'px'
       }
     },
-
     handleHit(evt) {
       if (typeof this.value !== 'undefined') {
         this.$emit('input', evt.text)
